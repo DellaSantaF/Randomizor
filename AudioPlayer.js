@@ -23,7 +23,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
             this.randomElt.play();
             setTimeout(null, minInterval + Math.random()*(maxInterval-minInterval));
         }
-    }     
+    }
 
     pause() {
         this.flag = false;
