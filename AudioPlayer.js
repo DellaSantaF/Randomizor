@@ -8,6 +8,10 @@ class AudioPlayer { //Audio player, pauser and randomizer
     constructor(audiosList) {
         this.list = audiosList;
         this.flag = true; //indicates wether the sound has to go on or stop
+
+        this.playButton = document.getElementById('playButton');
+
+        this.playButton.onclick = this.play;
     }
 
     randomElt() { //Gives a random element out of the list
@@ -15,6 +19,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     play() {
+        console.log('yeet')
         while (this.flag) {
             this.randomElt.play();
             setTimeout(null, minInterval + Math.random()*(maxInterval-minInterval));
