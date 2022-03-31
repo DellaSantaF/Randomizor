@@ -1,10 +1,9 @@
 //Main execution file
-let files = require('fs').readdirSync('/sounds/');
 let audios = [];
 
-for(file of files) {
-    let a = new Audio(file);
-    audios.append(a);
+for(file of data) {
+    let a = new Audio(`./sounds/${file.name}.mp3`);
+    audios.push(a);
 }
 
-new AudioPlayer(audios);
+let player = new AudioPlayer(audios);
