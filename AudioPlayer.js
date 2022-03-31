@@ -50,8 +50,9 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     pause() {
-        player.rd.pause();
-
+        try {
+            player.rd.pause();
+        } catch (e) {} finally {}
 
         for (let i=0; i<player.playClass.length; i++) {
             player.playClass[i].style.display = "block";
