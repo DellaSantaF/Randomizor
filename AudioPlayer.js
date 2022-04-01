@@ -1,6 +1,6 @@
 //AudioPlayer class file
 
-const minInterval = 20*1000; //milliseconds
+const minInterval = 0*1000; //milliseconds
 const maxInterval = 600*1000; //milliseconds
 
 
