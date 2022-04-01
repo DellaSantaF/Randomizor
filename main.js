@@ -2,8 +2,7 @@
 let audios = [];
 
 for(file of data) {
-    let a = new Audio(`./sounds/${file.name}.mp3`);
-    audios.push(a);
+    audios.push(new Audio(`./sounds/${file.name}.mp3`));
 }
 
 let player = new AudioPlayer(audios);

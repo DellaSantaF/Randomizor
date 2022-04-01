@@ -1,6 +1,6 @@
 //All mp3 data storage
 
-let data = [
+const data = [
     {name:'a-aahno-nooh', inList:true},
     {name:'aaah', inList:true},
     {name:'amaverjine', inList:true},
@@ -57,7 +57,7 @@ let data = [
     {name:'yt1s.com - Loudest orgasm ever earrape edition WARNING EARRAPE', inList:true}
 ]
 
-let logos = [
+const logos = [
     {name:'playButtonLogo', html:`<svg class="play" version="1.1" width="200" heigth="200"
     viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
         <circle class="play" style="fill:#1FCFC1;" cx="256" cy="256" r="245.801"/>
