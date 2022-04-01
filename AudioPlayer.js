@@ -22,6 +22,8 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.playClass = document.querySelectorAll('.play');
         this.pauseClass = document.querySelectorAll('.pause');
 
+        this.timer = document.getElementById('timer');
+
     }
 
     randomElt() { //Gives a random element out of the list
@@ -45,6 +47,13 @@ class AudioPlayer { //Audio player, pauser and randomizer
             player.rd = player.randomElt(); //idk why but I have to use player instead of this
             player.rd.play();
         },MIN_INTERVAL + Math.random()*(MAX_INTERVAL-MIN_INTERVAL))
+
+        let count = 0;
+        player.timerLoop = setInterval ( function() {
+
+            count += 1;
+            this.timer.textContent = `${Math.floor(count / 36000)}:${Math.floor((count%36000)/ 600)}:${Math.floor((count%600)/ 10)}.${Math.floor(count%10)}`;
+        },100)
     }
 
     pause() {
@@ -59,6 +68,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
             player.pauseClass[i].style.display = "none";
         }
 
+        clearInterval(player.timerLoop);
         clearInterval(player.loop);
     }
 }
