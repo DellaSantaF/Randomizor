@@ -1,6 +1,7 @@
 # Randomizor
 
 The Randomizor is an open source shitsound randomizer website.
+Check it out [here](https://randomizor.netlify.app/ "sus").
 
 ## Upcoming features
 
