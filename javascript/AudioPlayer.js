@@ -24,6 +24,9 @@ class AudioPlayer { //Audio player, pauser and randomizer
 
         this.timer = document.getElementById('timer');
 
+        this.secretButton = document.getElementById('secretButton');
+        this.secretButton.addEventListener('click', function() {player.randomElt().play();})
+
     }
 
     randomElt() { //Gives a random element out of the list

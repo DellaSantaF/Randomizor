@@ -1,4 +1,4 @@
-//All mp3 data storage
+//All mp3, svg data storage
 
 const data = [
     {name:'a-aahno-nooh', inList:true},
