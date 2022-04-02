@@ -25,7 +25,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    margin-bottom: 10%;
+    margin-bottom: 100px;
 }
 
 #websiteLogo
@@ -43,7 +43,7 @@ h1
 #timer
 {
     text-align: center;
-    margin-top: 5%;
+    margin-top: 50px;
     font-size: xx-large;
     font-weight: 600;
     color: #4D4D4D;
