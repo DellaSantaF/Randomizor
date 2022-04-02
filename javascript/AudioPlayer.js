@@ -51,7 +51,9 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     startTimer() {
-        let seconds = 0;
+        this.timer.textContent = '00 : 00 : 00';
+        
+        let seconds = 1;
         let minutes = 0;
         let hours = 0;
 
