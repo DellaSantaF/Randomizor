@@ -1,8 +1,6 @@
 //AudioPlayer class file
-
 const MIN_INTERVAL = 0*1000; //milliseconds
 const MAX_INTERVAL = 600*1000; //milliseconds
-
 
 class AudioPlayer { //Audio player, pauser and randomizer
     constructor(audiosList) {
@@ -26,7 +24,6 @@ class AudioPlayer { //Audio player, pauser and randomizer
 
         this.secretButton = document.getElementById('secretButton');
         this.secretButton.addEventListener('click', function() {player.randomElt().play();})
-
     }
 
     randomElt() { //Gives a random element out of the list
@@ -38,7 +35,6 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     playSound() {
-
         for (let i = 0; i < player.playClass.length; i++) {
             player.playClass[i].style.display = "none";
         }
@@ -51,12 +47,30 @@ class AudioPlayer { //Audio player, pauser and randomizer
             player.rd.play();
         },MIN_INTERVAL + Math.random()*(MAX_INTERVAL-MIN_INTERVAL))
 
-        let count = 0;
-        player.timerLoop = setInterval ( function() {
+        player.startTimer()
+    }
 
-            count += 1;
-            this.timer.textContent = `${Math.floor(count / 36000)}:${Math.floor((count%36000)/ 600)}:${Math.floor((count%600)/ 10)}.${Math.floor(count%10)}`;
-        },100)
+    startTimer() {
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        player.timerLoop = setInterval(
+            function() {
+                this.timer.textContent = `\
+                ${hours < 10? '0' + hours : hours} :
+                ${minutes < 10? '0' + minutes : minutes} :
+                ${seconds < 10? '0' + seconds : seconds}`
+
+                seconds++;
+                if(seconds < 60) return;
+                seconds = 0;
+                minutes++;
+                if(minutes < 60) return;
+                minutes = 0;
+                hours++;
+            }
+        ,1000)
     }
 
     pause() {
