@@ -1,6 +1,6 @@
 //AudioPlayer class file
 const MIN_INTERVAL = 0*1000; //milliseconds
-const MAX_INTERVAL = 600*1000; //milliseconds
+const MAX_INTERVAL = 10*1000; //milliseconds
 
 class AudioPlayer { //Audio player, pauser and randomizer
     constructor(audiosList) {
@@ -42,17 +42,26 @@ class AudioPlayer { //Audio player, pauser and randomizer
             player.pauseClass[i].style.display = "block";
         }
 
-        player.loop = setInterval ( function() {
-            player.rd = player.randomElt(); //idk why but I have to use player instead of this
-            player.rd.play();
-        },MIN_INTERVAL + Math.random()*(MAX_INTERVAL-MIN_INTERVAL))
+        player.randomSoundLoop()
 
         player.startTimer()
     }
 
+    randomSoundLoop() {
+        player.loop = setTimeout (
+            function() {
+                player.rd = player.randomElt();
+                player.rd.play();
+
+                randomSoundLoop(); // recursive call
+
+            },MIN_INTERVAL + Math.random()*(MAX_INTERVAL-MIN_INTERVAL)
+        )
+    }
+
     startTimer() {
         this.timer.textContent = '00 : 00 : 00';
-        
+
         let seconds = 1;
         let minutes = 0;
         let hours = 0;
@@ -87,7 +96,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
             player.pauseClass[i].style.display = "none";
         }
 
+        clearTimeout(player.loop);
         clearInterval(player.timerLoop);
-        clearInterval(player.loop);
     }
 }
