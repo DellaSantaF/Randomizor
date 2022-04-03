@@ -7,10 +7,10 @@ document.getElementById('pauseLogo').innerHTML = logos[1].html;
 
 //TODO: replace all instances of player with this.
 class AudioPlayer { //Audio player, pauser and randomizer
-    constructor(audiosList) {
-        this.list = audiosList;
+    constructor(audioList) {
+        this.audioList = audioList;
         this.loop; // play-sleep loop
-        this.rd; // will be used as the audio object
+        this.currentAudio; // will be used as the audio object
 
         this.playButton = document.getElementById('playButton');
         this.playButton.addEventListener('click', this.playSound);
@@ -27,12 +27,12 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.secretButton.addEventListener('click', () => {player.randomElt().play();})
     }
 
-    randomElt() { // Gives a random element out of the list
+    randomElt() { // Gives a random element out of the audioList
         let index;
         do { // does not use if inList = false
-            index = Math.floor(Math.random()*this.list.length);
+            index = Math.floor(Math.random()*this.audioList.length);
         } while (!data[index].inList)
-        return this.list[index]
+        return this.audioList[index]
     }
 
     playSound() {
@@ -51,8 +51,8 @@ class AudioPlayer { //Audio player, pauser and randomizer
     randomSoundLoop() {
         player.loop = setTimeout (
             () => {
-                player.rd = player.randomElt();
-                player.rd.play();
+                player.currentAudio = player.randomElt();
+                player.currentAudio.play();
 
                 player.randomSoundLoop(); // recursive call
             }
@@ -86,8 +86,8 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     pause() {
-        try {player.rd.pause();} 
-        catch (e) {} finally {}
+        try {player.currentAudio.pause();} 
+        catch (ex) {}
 
         for (const path of player.playClass) {
             path.style.display = "block";
