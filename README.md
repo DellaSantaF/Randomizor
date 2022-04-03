@@ -6,5 +6,5 @@ Check it out [here](https://randomizor.netlify.app/ "sus").
 ## Upcoming features
 
 Full playlist of random sounds.
-Direct in browser audio.
-Settings panel for sound and sound interval customisation.
+Settings panel for playlist and sound interval customisation.
+Soundstorm option.
