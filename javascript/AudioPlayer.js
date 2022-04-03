@@ -5,6 +5,7 @@ const MAX_INTERVAL = 600*1000; // milliseconds
 document.getElementById('playLogo').innerHTML = logos[0].html;
 document.getElementById('pauseLogo').innerHTML = logos[1].html;
 
+//TODO: replace all instances of player with this.
 class AudioPlayer { //Audio player, pauser and randomizer
     constructor(audiosList) {
         this.list = audiosList;
@@ -23,7 +24,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.timer = document.getElementById('timer');
 
         this.secretButton = document.getElementById('secretButton');
-        this.secretButton.addEventListener('click', function() {player.randomElt().play();})
+        this.secretButton.addEventListener('click', () => {player.randomElt().play();})
     }
 
     randomElt() { // Gives a random element out of the list
@@ -35,11 +36,11 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     playSound() {
-        for (let i = 0; i < player.playClass.length; i++) {
-            player.playClass[i].style.display = "none";
+        for (const path of player.playClass) {
+            path.style.display = "none";
         }
-        for (let i = 0; i < player.pauseClass.length; i++) {
-            player.pauseClass[i].style.display = "block";
+        for (const path of player.pauseClass) {
+            path.style.display = "block";
         }
 
         player.randomSoundLoop()
@@ -88,11 +89,11 @@ class AudioPlayer { //Audio player, pauser and randomizer
         try {player.rd.pause();} 
         catch (e) {} finally {}
 
-        for (let i = 0; i < player.playClass.length; i++) {
-            player.playClass[i].style.display = "block";
+        for (const path of player.playClass) {
+            path.style.display = "block";
         }
-        for (let i = 0; i < player.pauseClass.length; i++) {
-            player.pauseClass[i].style.display = "none";
+        for (const path of player.pauseClass) {
+            path.style.display = "none";
         }
 
         clearTimeout(player.loop);
