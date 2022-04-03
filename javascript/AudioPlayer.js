@@ -2,14 +2,14 @@
 const MIN_INTERVAL = 0*1000; // milliseconds
 const MAX_INTERVAL = 600*1000; // milliseconds
 
+document.getElementById('playLogo').innerHTML = logos[0].html;
+document.getElementById('pauseLogo').innerHTML = logos[1].html;
+
 class AudioPlayer { //Audio player, pauser and randomizer
     constructor(audiosList) {
         this.list = audiosList;
         this.loop; // play-sleep loop
         this.rd; // will be used as the audio object
-
-        document.getElementById('playLogo').innerHTML = logos[0].html;
-        document.getElementById('pauseLogo').innerHTML = logos[1].html;
 
         this.playButton = document.getElementById('playButton');
         this.playButton.addEventListener('click', this.playSound);
