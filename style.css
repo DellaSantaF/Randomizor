@@ -24,7 +24,7 @@ body {
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-between;
     margin-bottom: 100px;
 }
 
@@ -48,4 +48,26 @@ h1
     font-weight: 600;
     color: #4D4D4D;
     font-family: monospace;
+}
+
+#leftBlock
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-left: 1%;
+}
+
+#rightBlock
+{
+    margin: auto 5%;
+}
+
+input[type=number]
+{
+    background-color: #1FCFC1;
+    border-color: #4D4D4D;
+    border-radius: 5px;
+    border-width: 2px;
+    padding: 4px;
 }

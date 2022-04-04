@@ -1,6 +1,6 @@
 // AudioPlayer class file
 const MIN_INTERVAL = 0*1000; // milliseconds
-const MAX_INTERVAL = 600*1000; // milliseconds
+let MAX_INTERVAL = 600*1000; // milliseconds
 
 document.getElementById('playLogo').innerHTML = logos[0].html;
 document.getElementById('pauseLogo').innerHTML = logos[1].html;
@@ -25,6 +25,9 @@ class AudioPlayer { //Audio player, pauser and randomizer
 
         this.secretButton = document.getElementById('secretButton');
         this.secretButton.addEventListener('click', () => {player.randomElt().play();})
+
+        this.intervalChange = document.getElementById('interval');
+        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(player.intervalChange.value)});
     }
 
     randomElt() { // Gives a random element out of the audioList
