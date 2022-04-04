@@ -1,73 +1,68 @@
-body {
-    color: black;
+* {
+    color: #4D4D4D;
+    font-size: medium;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: aquamarine;
+    background-color: rgb(189, 245, 255);
 }
 
-#button
-{
+#button {
     display: flex;
     justify-content: center;
 }
 
-.pause
-{
+.pause {
     display: none;
 }
 
-.play
-{
+.play {
     display: block;
 }
 
-#pageHead
-{
+#pageHead {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 100px;
 }
 
-#websiteLogo
-{
+#websiteLogo {
     width: 100px;
     height: 100px;
-
+    margin-right: 20px;
 }
 
-h1
-{
+h1 {
+    font-size: xx-large;
     margin-top: 30px;
 }
 
-#timer
-{
+#timer {
     text-align: center;
     margin-top: 50px;
     font-size: xx-large;
     font-weight: 600;
-    color: #4D4D4D;
     font-family: monospace;
 }
 
-#leftBlock
-{
+#leftBlock {
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
     margin-left: 1%;
 }
 
-#rightBlock
-{
+#rightBlock {
     margin: auto 5%;
 }
 
-input[type=number]
-{
+input[type=number] {
     background-color: #1FCFC1;
     border-color: #4D4D4D;
     border-radius: 5px;
     border-width: 2px;
     padding: 4px;
+}
+
+label {
+    font-weight: bold;
 }
