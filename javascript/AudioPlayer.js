@@ -27,7 +27,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.secretButton.addEventListener('click', () => {player.randomElt().play();})
 
         this.intervalChange = document.getElementById('interval');
-        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(player.intervalChange.value)});
+        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(player.intervalChange.value)*60*1000});
     }
 
     randomElt() { // Gives a random element out of the audioList
