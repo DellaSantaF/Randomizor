@@ -1,7 +1,4 @@
 //All mp3, svg data storage
-function audioByID(id) {
-    return (data.filter(obj => obj.name == id)[0])
-}
 
 const data = [
     {name: "a-aahno-nooh", inList: true},
@@ -29,6 +26,7 @@ const data = [
     {name: "jépapété", inList: false},
     {name: "Le Monke's Fart Sound Effect", inList: true},
     {name: "lotadamej", inList: true},
+    {name: "Loudest orgasm ever EARRAPE", inList: true},
     {name: "mario_fall", inList: true},
     {name: "mario_triplejump", inList: true},
     {name: "mickeyfart", inList: true},
@@ -78,5 +76,4 @@ const data = [
     {name: "yeet", inList: true},
     {name: "yrug", inList: true},
     {name: "yrurunin", inList: true},
-    {name: "Loudest orgasm ever EARRAPE", inList: true},
 ]
