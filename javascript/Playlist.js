@@ -17,7 +17,7 @@ class Playlist {
         this.table.innerHTML = this.html;
 
         for (let id of this.ids) {
-            let elt = audioByID(id);
+            let elt = AudioPlayer.audioByID(id);
             let docElt = document.getElementById(id);
             docElt.addEventListener('click', () => {elt.inList = !elt.inList; if (elt.inList) {docElt.style.backgroundColor = "#1FCFC1";} else {docElt.style.backgroundColor = "";}});
 

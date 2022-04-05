@@ -102,4 +102,8 @@ class AudioPlayer { //Audio player, pauser and randomizer
         clearTimeout(player.loop);
         clearInterval(player.timerLoop);
     }
+
+    static audioByID(id) {
+        return (data.filter(obj => obj.name == id)[0])
+    }
 }
