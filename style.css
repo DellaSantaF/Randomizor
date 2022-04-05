@@ -92,3 +92,9 @@ button {
 tr:nth-child(odd) {
     background: #71f1c6;
 }
+
+#playlistPage {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+}
