@@ -1,3 +1,6 @@
+// Include filenames without ".mp3" of audio files to ignore.
+// End line after each entry including the final entry.
+
 gamme
 jépapété
 photo

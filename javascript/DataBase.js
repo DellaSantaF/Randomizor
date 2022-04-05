@@ -11,7 +11,7 @@ const data = [
     {name: "braindamgae", inList: true},
     {name: "choke", inList: true},
     {name: "cvedir", inList: false},
-    {name: "davidG", inList: true},
+    {name: "davidG", inList: false},
     {name: "diabeetus", inList: true},
     {name: "dkrap", inList: true},
     {name: "enui", inList: true},

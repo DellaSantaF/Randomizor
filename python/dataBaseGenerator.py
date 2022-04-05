@@ -7,10 +7,9 @@ dataBase = 'dataBase.js'
 
 with open(f'./python/disable.txt', 'r', encoding='utf-8') as ignoreList:
     ignore = set()
-    for item in ignoreList.readlines():
+    for item in ignoreList.readlines()[3:]:
         ignore.add(item[:-1])
 
-print(ignore)
 with open(f'./javascript/{dataBase}', 'w', encoding='utf-8') as data:
 
     data.write('//All mp3, svg data storage\n\nconst data = [\n')
