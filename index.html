@@ -9,10 +9,17 @@
 
     <link rel="stylesheet" href="style.css"/>
 
+<<<<<<< Updated upstream
     <script src="./javascript/dataBase.js" defer></script>
     <script src="./javascript/logos.js" defer></script>
     <script src="./javascript/AudioPlayer.js" defer></script>
     <script src="./javascript/main.js" defer></script>
+=======
+    <script src="javascript/DataBase.js" defer></script>
+    <script src="javascript/Playlist.js" defer></script>
+    <script src="javascript/AudioPlayer.js" defer></script>
+    <script src="javascript/main.js" defer></script>
+>>>>>>> Stashed changes
     
 </head>
 
@@ -31,12 +38,20 @@
         <label id="rightBlock" for="interval">Max interval <input type="number" id="interval" name="interval" min="1" max="10" value="10"> minutes</label>
     </div>
 
-    <div id="button">
-        <div id="playLogo"></div>
-        <div id="pauseLogo"></div>
-    </div>
+    <div id="main">
+
+        <div id="button">
+            <div id="playLogo"></div>
+            <div id="pauseLogo"></div>
+        </div>
     
-    <div id="timer">00 : 00 : 00</div>
+    
+        <div id="timer">00 : 00 : 00</div>
+    </div>
+
+    <div id="playlistPage">
+        <table><tbody id="playlist"></tbody></table>
+    </div>
 
     
 

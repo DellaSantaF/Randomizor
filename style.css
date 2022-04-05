@@ -66,3 +66,17 @@ input[type=number] {
 label {
     font-weight: bold;
 }
+
+table {
+    width: 100%;
+}
+
+tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+td {
+    margin: auto;
+}
