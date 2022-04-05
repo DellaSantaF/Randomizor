@@ -22,7 +22,7 @@ class Playlist {
 
         for (let id of this.ids) {
             let elt = data.filter(obj => obj.name == id)[0]
-            document.getElementById(id).addEventListener('click', () => {if (elt.inList) {elt.inList = false} else {elt.inList = true}});
+            document.getElementById(id).addEventListener('click', () => {elt.inList = !elt.inList});
         }
     }
 }
