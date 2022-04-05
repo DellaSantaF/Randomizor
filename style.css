@@ -2,7 +2,7 @@
     color: #4D4D4D;
     font-size: medium;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: aquamarine;
+    background-color: #7fffd4;
 }
 
 #button {
@@ -74,9 +74,21 @@ table {
 tr {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 15px;
 }
 
-td {
-    margin: auto;
+
+audio {
+    width: 1000px;
+}
+
+button {
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+
+tr:nth-child(odd) {
+    background: #71f1c6;
 }

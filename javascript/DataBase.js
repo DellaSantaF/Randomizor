@@ -1,4 +1,7 @@
 //All mp3, svg data storage
+function audioByID(id) {
+    return (data.filter(obj => obj.name == id)[0])
+}
 
 const data = [
     {name: "a-aahno-nooh", inList: true},
