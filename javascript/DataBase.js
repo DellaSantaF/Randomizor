@@ -78,5 +78,5 @@ const data = [
     {name: "yeet", inList: true},
     {name: "yrug", inList: true},
     {name: "yrurunin", inList: true},
-    {name: "yt1s.com - Loudest orgasm ever earrape edition WARNING EARRAPE", inList: true},
+    {name: "Loudest orgasm ever WARNING EARRAPE", inList: true},
 ]
