@@ -7,9 +7,9 @@ document.getElementById('pauseLogo').innerHTML = logos[1].html;
 
 //TODO: replace all instances of player with this.
 class AudioPlayer { //Audio player, pauser and randomizer
-    constructor(audioList) {
-        const self = this;
-        this.audioList = audioList;
+    static enabled = new Set();
+
+    constructor() {
         this.loop; // play-sleep loop
         this.currentAudio; // will be used as the audio object
 
@@ -31,16 +31,15 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.intervalInput.addEventListener('change', () => {max_interval = Number(this.intervalInput.value)*60*1000});
     }
 
-    randomElt() { // Gives a random element out of the audioList
-        let index;
-        do { // does not use if inList = false
-            index = Math.floor(Math.random()*this.audioList.length);
-        } while (!data[index].inList)
-        return this.audioList[index]
+    randomElt() { // Gives a random audioName out of the enabled
+        let idx = (Math.random() * AudioPlayer.enabled.size) >> 0
+        for(const audioName of AudioPlayer.enabled) {
+            if(!idx--) return audioName;
+        }
     }
 
     randomSound() {
-        this.randomElt().play();
+        audios[this.randomElt()].play();
     }
 
     play() {
@@ -92,10 +91,10 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     pause() {
-        this.audioList.forEach((audio) => {
+        for(const audio of Object.values(audios)) {
             audio.pause();
             audio.currentTime = 0;
-        })
+        }
 
         for (const path of this.playClass) {
             path.style.display = "block";
@@ -108,7 +107,20 @@ class AudioPlayer { //Audio player, pauser and randomizer
         clearInterval(this.timerLoop);
     }
 
-    static audioByID(id) {
-        return (data.filter(obj => obj.name == id)[0])
+    static enableAudio(filename) {
+        AudioPlayer.enabled.add(filename);
+    }
+
+    static disableAudio(filename) {
+        AudioPlayer.enabled.delete(filename);
+    }
+
+    static toggleAudio(filename) {
+        if(AudioPlayer.enabled.has(filename)) {
+            AudioPlayer.disableAudio(filename);
+        }
+        else {
+            AudioPlayer.enableAudio(filename);
+        }
     }
 }

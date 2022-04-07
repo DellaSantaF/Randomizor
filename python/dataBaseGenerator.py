@@ -10,7 +10,7 @@ with open(dataBase, 'w', encoding='utf-8') as data:
 
     data.write("""//All mp3, svg data storage
     
-const data = [
+const audioNames = [
 """)
 
     for filename in listdir('./sounds'):

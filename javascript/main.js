@@ -1,10 +1,17 @@
 //Main execution file
-const audios = Array();
-
-for(file of data) {
-    audios.push(new Audio(`./sounds/${file.name}.mp3`));
+audioPath = (audioName) => {return `./sounds/${audioName}.mp3`}
+audios = {}
+for(const audioName of audioNames) {
+    audios[audioName] = new Audio(audioPath(audioName));
 }
 
-const playlistManager = new Playlist(audios);
+const player = new AudioPlayer();
 
-const player = new AudioPlayer(audios);
+for(const audioName of audioNames) {
+    AudioPlayer.enableAudio(audioName);
+}
+for(const audioName of disable) {
+    AudioPlayer.disableAudio(audioName);
+}
+
+const playlistManager = new Playlist(audioNames);
