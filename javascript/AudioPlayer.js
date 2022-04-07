@@ -24,10 +24,10 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.timer = document.getElementById('timer');
 
         this.secretButton = document.getElementById('secretButton');
-        this.secretButton.addEventListener('click', () => {player.randomElt().play();})
+        this.secretButton.addEventListener('click', () => {this.randomElt().play();})
 
         this.intervalChange = document.getElementById('interval');
-        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(player.intervalChange.value)*60*1000});
+        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(this.intervalChange.value)*60*1000});
     }
 
     randomElt() { // Gives a random element out of the audioList
@@ -89,8 +89,9 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     pause() {
-        try {player.currentAudio.pause();} 
-        catch (ex) {}
+        player.audioList.forEach((audio) => {
+            audio.pause();
+        })
 
         for (const path of player.playClass) {
             path.style.display = "block";

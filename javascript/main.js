@@ -1,10 +1,10 @@
 //Main execution file
-let audios = [];
+const audios = Array();
 
 for(file of data) {
     audios.push(new Audio(`./sounds/${file.name}.mp3`));
 }
 
-let playlistManager = new Playlist(audios);
+const playlistManager = new Playlist(audios);
 
-let player = new AudioPlayer(audios);
+const player = new AudioPlayer(audios);
