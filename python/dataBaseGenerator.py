@@ -1,23 +1,29 @@
 # Generates dataBase.js using sounds directory
 # Add mp3 filename to disable.txt to set its inList property to false
 
-import os
+from os import listdir
 
-dataBase = 'dataBase.js'
+dataBase = './javascript/dataBase.js'
+disable = './javascript/disable.js'
 
-with open(f'./python/disable.txt', 'r', encoding='utf-8') as ignoreList:
-    ignore = set()
-    for item in ignoreList.readlines()[3:]:
-        ignore.add(item[:-1])
+with open('./python/disable.txt', 'r', encoding='utf-8') as ignoreList, open(disable, 'w', encoding='utf-8') as disable:
+    disable.write("""// audio files disabled by default.
 
-with open(f'./javascript/{dataBase}', 'w', encoding='utf-8') as data:
+disable = [
+""")
+    for filename in ignoreList.readlines()[3:]:
+        disable.write(f'    "{filename[:-1]}",\n')
 
-    data.write('//All mp3, svg data storage\n\nconst data = [\n')
+    disable.write(']')
 
-    for filename in os.listdir('./sounds'):
-        filename = filename[:-4]
-        inList = 'false' if filename in ignore else 'true'
+with open(dataBase, 'w', encoding='utf-8') as data:
 
-        data.write('    {' + f'name: "{filename}", inList: {inList}' + '},\n')
+    data.write("""//All mp3, svg data storage
+    
+const data = [
+""")
+
+    for filename in listdir('./sounds'):
+        data.write(f'    "{filename[:-4]}",\n')
 
     data.write(']')
