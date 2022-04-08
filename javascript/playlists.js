@@ -1,4 +1,4 @@
-// audio files disabled by default.
+// disable playlist.
 
 disable = [
     "gamme",
@@ -14,3 +14,4 @@ disable = [
     "cvedir",
     "davidG",
 ]
+
