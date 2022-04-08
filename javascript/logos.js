@@ -1,8 +1,8 @@
 const logos = [
-    {name:'playButtonLogo', html:`<svg class="play" version="1.1" width="200" heigth="200"
+    {name:'playButtonLogo', html:`<svg id="playButton" class="play" version="1.1" width="200" heigth="200"
     viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
         <circle class="play" style="fill:#1FCFC1;" cx="256" cy="256" r="245.801"/>
-        <polygon id="playButton" class="play" style="fill:#F2F2F2;" points="195.825,391.629 376.351,256 195.825,120.371 "/>
+        <polygon class="play" style="fill:#F2F2F2;" points="195.825,391.629 376.351,256 195.825,120.371 "/>
         <g class="play">
             <path class="play" style="fill:#4D4D4D;" d="M256,512c-68.381,0-132.667-26.628-181.019-74.98C26.628,388.667,0,324.38,0,256
                S26.628,123.333,74.981,74.98C123.333,26.628,187.619,0,256,0s132.667,26.628,181.019,74.98C485.372,123.333,512,187.62,512,256
@@ -21,7 +21,7 @@ const logos = [
         </g>
    </svg>`},
 
-   {name:'pauseButtonLogo', html:`<svg class="pause" version="1.1" width="200" heigth="200"
+   {name:'pauseButtonLogo', html:`<svg id="pauseButton" class="pause" version="1.1" width="200" heigth="200"
    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
       <circle class="pause" style="fill:#1FCFC1;" cx="256" cy="256" r="245.801"/>
       <g class="pause">
@@ -45,9 +45,6 @@ const logos = [
           <path class="pause" style="fill:#4D4D4D;" d="M430.397,377.824c-1.885,0-3.792-0.522-5.496-1.615c-4.742-3.04-6.12-9.35-3.079-14.091
               c1.523-2.374,3.008-4.803,4.413-7.217c2.833-4.87,9.076-6.519,13.945-3.684c4.868,2.833,6.517,9.077,3.684,13.945
               c-1.552,2.667-3.191,5.347-4.872,7.969C437.044,376.167,433.756,377.824,430.397,377.824z"/>
-      </g>
-      <g class="pause">
-            <rect class="pause" id="pauseButton" x="168.287" y="120.371" style="fill:blue;fill-opacity:0;" width="175.426" height="271.258"/>
       </g>
   </svg>`}
 ]
