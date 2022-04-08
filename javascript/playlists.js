@@ -1,7 +1,6 @@
 // disable playlist.
 
 disable = [
-    "gamme",
     "jépapété",
     "photo",
     "ogpt2",
@@ -13,5 +12,9 @@ disable = [
     "beepsheep",
     "cvedir",
     "davidG",
+    "enui",
+    "epe",
+    "nop",
+    "toon3",
 ]
 
