@@ -76,6 +76,7 @@ label {
     flex: 1 0 auto;
     display: flex;
     border: 1px solid #4D4D4D;
+    border-radius: 12px;
     margin: 12px 24px;
 }
 
@@ -87,6 +88,8 @@ label {
 
 .audioListElement .play {
     background-color: rgb(168, 255, 245);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .audioListElement button {
