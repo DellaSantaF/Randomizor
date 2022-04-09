@@ -1,35 +1,37 @@
 //Manager of the selectable sounds interface
+$ = (id) => {return document.getElementById(id)};
+
+PRESSED_COLOR = "rgba(0, 100, 255, 0.3)"
 
 class Playlist {
     constructor(audioNames) {
          
-        this.table = document.getElementById('playlist');
+        this.table = $('audioList');
         this.html = "";
 
         for (const audioName of audioNames) {
-            this.html += `<tr><td><button type="button" id="${audioName}" class="playlistButton">${audioName}</button></td><td><button id="${audioName}B">Play</button></td></tr>`;
+            this.html += `<span class="audioListElement" id="${audioName}">
+                            <span class="toggle" id="${audioName}t">${audioName}</span>
+                            <button class="play" id="${audioName}p">Play</button>
+                        </span>`
         }
 
         this.table.innerHTML = this.html;
 
         for (const id of audioNames) {
-            let docElt = document.getElementById(id);
-            docElt.addEventListener('click', () => {
+            $(id + 't').addEventListener('click', () => {
                 AudioPlayer.toggleAudio(id);
-                if (AudioPlayer.enabled.has(id)) {docElt.style.backgroundColor = "#1FCFC1";}
-                else {docElt.style.backgroundColor = "";}
+                if (AudioPlayer.enabled.has(id)) {$(id).style.backgroundColor = PRESSED_COLOR;}
+                else {$(id).style.backgroundColor = "";}
             });
 
             if (AudioPlayer.enabled.has(id)) {
-                docElt.style.backgroundColor = "#1FCFC1"
+                $(id).style.backgroundColor = PRESSED_COLOR;
             }
         }
 
-        for (const fakeId of audioNames) {
-            let docElt = document.getElementById(fakeId + "B");
-            docElt.addEventListener('click', () => {this.playSound(fakeId)});
-
-            docElt.style.backgroundColor = "#1FCFC1";
+        for (const id of audioNames) {
+            $(id + 'p').addEventListener('click', () => {this.playSound(id)});
         }
     }
 
