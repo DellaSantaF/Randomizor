@@ -1,41 +1,41 @@
 //Manager of the selectable sounds interface
+$ = (id) => {return document.getElementById(id)};
+
+PRESSED_COLOR = "rgba(0, 100, 255, 0.3)"
 
 class Playlist {
-    constructor(audios) {
+    constructor(audioNames) {
          
-        this.audios = audios;
-        this.table = document.getElementById('playlist');
+        this.table = $('audioList');
         this.html = "";
-        this.ids = [];
 
-        for (let elt of data) {
-            this.html += `<tr><td><button type="button" id="${elt.name}" class="playlistButton">${elt.name}</button></td><td><button id="${elt.name}B">Play</button></td></tr>`;
-
-            this.ids.push(elt.name);
+        for (const audioName of audioNames) {
+            this.html += `<span class="audioListElement" id="${audioName}">
+                            <span class="toggle" id="${audioName}t">${audioName}</span>
+                            <button class="play" id="${audioName}p">Play</button>
+                        </span>`
         }
 
         this.table.innerHTML = this.html;
 
-        for (let id of this.ids) {
-            let elt = AudioPlayer.audioByID(id);
-            let docElt = document.getElementById(id);
-            docElt.addEventListener('click', () => {elt.inList = !elt.inList; if (elt.inList) {docElt.style.backgroundColor = "#1FCFC1";} else {docElt.style.backgroundColor = "";}});
+        for (const id of audioNames) {
+            $(id + 't').addEventListener('click', () => {
+                AudioPlayer.toggleAudio(id);
+                if (AudioPlayer.enabled.has(id)) {$(id).style.backgroundColor = PRESSED_COLOR;}
+                else {$(id).style.backgroundColor = "";}
+            });
 
-            if (elt.inList) {
-                docElt.style.backgroundColor = "#1FCFC1"
+            if (AudioPlayer.enabled.has(id)) {
+                $(id).style.backgroundColor = PRESSED_COLOR;
             }
         }
 
-        for (let fakeID of this.ids) {
-            let id = fakeID + "B";
-            let docElt = document.getElementById(id);
-            docElt.addEventListener('click', () => {this.playSound(fakeID)});
-
-            docElt.style.backgroundColor = "#1FCFC1";
+        for (const id of audioNames) {
+            $(id + 'p').addEventListener('click', () => {this.playSound(id)});
         }
     }
 
-    playSound(id) {
-        this.audios[data.findIndex((elt) => {return elt.name == id;})].play();
+    playSound(audioName) {
+        audios[audioName].play();
     }
 }

@@ -1,23 +1,41 @@
-# Generates dataBase.js using sounds directory
-# Add mp3 filename to disable.txt to set its inList property to false
+# Generates audioNames.js using sounds directory
+# Add mp3 filename to playlist.txt to set its inList property to false
 
-import os
+from os import listdir
 
-dataBase = 'dataBase.js'
+audioNamesPath = './javascript/audioNames.js'
 
-with open(f'./python/disable.txt', 'r', encoding='utf-8') as ignoreList:
-    ignore = set()
-    for item in ignoreList.readlines()[3:]:
-        ignore.add(item[:-1])
+# Generate audioNames.js
+with open(audioNamesPath, 'w', encoding='utf-8') as destination:
 
-with open(f'./javascript/{dataBase}', 'w', encoding='utf-8') as data:
+    destination.write('//All mp3 filenames\n\nconst audioNames = [\n')
 
-    data.write('//All mp3, svg data storage\n\nconst data = [\n')
+    for audioName in listdir('./sounds'):
+        destination.write(f'    "{audioName[:-4]}",\n')
 
-    for filename in os.listdir('./sounds'):
-        filename = filename[:-4]
-        inList = 'false' if filename in ignore else 'true'
+    destination.write(']')
 
-        data.write('    {' + f'name: "{filename}", inList: {inList}' + '},\n')
+print(f'{audioNamesPath} successfully updated.')
 
-    data.write(']')
+# Generates playlists
+with open(f'./javascript/playlists.js', 'w', encoding='utf-8') as destination:
+    for filename in listdir('./python/playlists'):
+        with open(f'./python/playlists/{filename}', 'r', encoding='utf-8') as playlist:
+            destination.write(f'// {filename[:-4]} playlist.\n\n{filename[:-4]} = [\n')
+            for audioName in playlist.readlines()[3:]:
+                destination.write(f'    "{audioName[:-1]}",\n')
+
+            destination.write(']\n\n')
+
+        print(f'{filename[:-4]} successfully updated.')
+    
+    print('playlists successfully updated.')
+
+
+# Generates txt files
+def generatePlaylist(playlistName):
+    if playlistName + '.txt' in listdir('./python/playlists'):
+        print(f'{playlistName} already exists')
+        return
+    with open(f'./python/playlists/{playlistName}.txt', 'a', encoding='utf-8') as txtFile:
+        txtFile.write(f'// Include filenames without ".mp3" of audio files to add to the {filename} playlist.\n// End line after each entry including the final entry.\n')

@@ -1,65 +1,74 @@
 // AudioPlayer class file
 const MIN_INTERVAL = 0*1000; // milliseconds
-let MAX_INTERVAL = 600*1000; // milliseconds
+let max_interval = 600*1000; // milliseconds
 
-document.getElementById('playLogo').innerHTML = logos[0].html;
-document.getElementById('pauseLogo').innerHTML = logos[1].html;
+$ = (id) => {return document.getElementById(id)};
+
+$('playLogo').innerHTML = logos[0].html;
+$('pauseLogo').innerHTML = logos[1].html;
 
 //TODO: replace all instances of player with this.
 class AudioPlayer { //Audio player, pauser and randomizer
-    constructor(audioList) {
-        this.audioList = audioList;
+    static enabled = new Set();
+
+    constructor() {
         this.loop; // play-sleep loop
         this.currentAudio; // will be used as the audio object
 
-        this.playButton = document.getElementById('playButton');
-        this.playButton.addEventListener('click', this.playSound);
+        this.playButton = $('playButton');
+        this.playButton.addEventListener('click', () => {this.play()});
 
-        this.pauseButton = document.getElementById('pauseButton');
-        this.pauseButton.addEventListener('click', this.pause);
+        this.pauseButton = $('pauseButton');
+        this.pauseButton.addEventListener('click', () => {this.pause()});
 
         this.playClass = document.querySelectorAll('.play');
         this.pauseClass = document.querySelectorAll('.pause');
 
-        this.timer = document.getElementById('timer');
+        this.timer = $('timer');
 
-        this.secretButton = document.getElementById('secretButton');
-        this.secretButton.addEventListener('click', () => {player.randomElt().play();})
+        this.secretButton = $('secretButton');
+        this.secretButton.addEventListener('click', () => {this.randomSound()})
 
-        this.intervalChange = document.getElementById('interval');
-        this.intervalChange.addEventListener('change', () => {MAX_INTERVAL = Number(player.intervalChange.value)*60*1000});
+        this.intervalInput = $('interval');
+        this.intervalInput.addEventListener('change', () => {max_interval = Number(this.intervalInput.value)*60*1000});
     }
 
-    randomElt() { // Gives a random element out of the audioList
-        let index;
-        do { // does not use if inList = false
-            index = Math.floor(Math.random()*this.audioList.length);
-        } while (!data[index].inList)
-        return this.audioList[index]
+    randomElt() { // Gives a random audioName out of the enabled
+        let idx = (Math.random() * AudioPlayer.enabled.size) >> 0
+        for(const audioName of AudioPlayer.enabled) {
+            if(!idx--) return audioName;
+        }
     }
 
-    playSound() {
-        for (const path of player.playClass) {
+    randomSound() {
+        audios[this.randomElt()].play();
+    }
+
+    randomEvent() {
+
+        this.randomSound();
+    }
+
+    play() {
+        for (const path of this.playClass) {
             path.style.display = "none";
         }
-        for (const path of player.pauseClass) {
+        for (const path of this.pauseClass) {
             path.style.display = "block";
         }
 
-        player.randomSoundLoop()
-
-        player.startTimer()
+        this.startLoop()
+        this.startTimer()
     }
 
-    randomSoundLoop() {
-        player.loop = setTimeout (
+    startLoop() {
+        this.loop = setTimeout (
             () => {
-                player.currentAudio = player.randomElt();
-                player.currentAudio.play();
+                this.randomEvent()
 
-                player.randomSoundLoop(); // recursive call
+                this.startLoop(); // recursive call
             }
-            ,MIN_INTERVAL + Math.random()*(MAX_INTERVAL-MIN_INTERVAL)
+            ,MIN_INTERVAL + Math.random()*(max_interval-MIN_INTERVAL)
         )
     }
 
@@ -70,7 +79,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
         let minutes = 0;
         let hours = 0;
 
-        player.timerLoop = setInterval(
+        this.timerLoop = setInterval(
             () => {
                 this.timer.textContent = `\
                 ${hours < 10? '0' + hours : hours} :
@@ -89,21 +98,36 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     pause() {
-        try {player.currentAudio.pause();} 
-        catch (ex) {}
+        for(const audio of Object.values(audios)) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
 
-        for (const path of player.playClass) {
+        for (const path of this.playClass) {
             path.style.display = "block";
         }
-        for (const path of player.pauseClass) {
+        for (const path of this.pauseClass) {
             path.style.display = "none";
         }
 
-        clearTimeout(player.loop);
-        clearInterval(player.timerLoop);
+        clearTimeout(this.loop);
+        clearInterval(this.timerLoop);
     }
 
-    static audioByID(id) {
-        return (data.filter(obj => obj.name == id)[0])
+    static enableAudio(filename) {
+        AudioPlayer.enabled.add(filename);
+    }
+
+    static disableAudio(filename) {
+        AudioPlayer.enabled.delete(filename);
+    }
+
+    static toggleAudio(filename) {
+        if(AudioPlayer.enabled.has(filename)) {
+            AudioPlayer.disableAudio(filename);
+        }
+        else {
+            AudioPlayer.enableAudio(filename);
+        }
     }
 }
