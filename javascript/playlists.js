@@ -16,5 +16,6 @@ disable = [
     "epe",
     "nop",
     "toon3",
+    "sanfe",
 ]
 
