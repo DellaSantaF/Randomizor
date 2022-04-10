@@ -1,21 +1,15 @@
 // disable playlist.
 
 disable = [
-    "jépapété",
-    "photo",
-    "ogpt2",
-    "ogpt3",
-    "realman",
-    "photo",
-    "stegosaurus",
-    "trompet",
-    "beepsheep",
-    "cvedir",
-    "davidG",
-    "enui",
-    "epe",
-    "nop",
-    "toon3",
-    "sanfe",
+    "No fart",
+    "Ogpt 2",
+    "Ogpt 3",
+    "Real man",
+    "Stegosaurus",
+    "Beep sheep",
+    "Ennui",
+    "Epee",
+    "Non",
+    "Sans fe",
 ]
 
