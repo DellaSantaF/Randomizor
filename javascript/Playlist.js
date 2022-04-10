@@ -11,8 +11,8 @@ class Playlist {
 
         for (const audioName of audioNames) {
             this.html += `<span class="audioListElement" id="${audioName}">
-                            <span class="toggle" id="${audioName}t">${audioName}</span>
-                            <button class="play" id="${audioName}p">Play</button>
+                            <span class="text" id="${audioName}t">${audioName}</span>
+                            <button class="bubble" id="${audioName}p">Play</button>
                         </span>`
         }
 
