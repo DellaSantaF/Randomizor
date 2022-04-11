@@ -10,6 +10,6 @@ disable = [
     "Ennui",
     "Epee",
     "Non",
-    "Sans fe",
+    "Sans feu",
 ]
 
