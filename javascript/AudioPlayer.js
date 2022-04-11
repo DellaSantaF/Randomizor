@@ -53,7 +53,7 @@ class AudioPlayer { //Audio player, pauser and randomizer
         let rand = Math.random();
         rand -= SALVO_CHANCE
         if(rand < 0) {
-            this.salvo((SALVO_LENGTH * Math.random()) >> 0);
+            this.salvo((SALVO_LENGTH * Math.random() + 1) >> 0);
         }
 
         this.randomSound();
