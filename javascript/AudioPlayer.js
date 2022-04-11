@@ -52,7 +52,6 @@ class AudioPlayer { //Audio player, pauser and randomizer
     randomEvent() {
         let rand = Math.random();
         rand -= SALVO_CHANCE
-        console.log(rand);
         if(rand < 0) {
             this.salvo((SALVO_LENGTH * Math.random()) >> 0);
         }
@@ -127,7 +126,6 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     salvo(count) {
-        console.log(count);
         if(!count) return;
 
         this.randomSound();
