@@ -1,5 +1,9 @@
 // AudioPlayer class file
 const MIN_INTERVAL = 0*1000; // milliseconds
+const SALVO_CHANCE = 0.1;
+const SALVO_LENGTH = 20;
+const SALVO_INTERVAL = 2000; // ms
+
 let max_interval = 600*1000; // milliseconds
 
 $ = (id) => {return document.getElementById(id)};
@@ -27,10 +31,11 @@ class AudioPlayer { //Audio player, pauser and randomizer
         this.timer = $('timer');
 
         this.secretButton = $('secretButton');
-        this.secretButton.addEventListener('click', () => {this.randomSound()})
+        this.secretButton.addEventListener('click', () => {this.randomEvent()})
 
         this.intervalInput = $('interval');
         this.intervalInput.addEventListener('change', () => {max_interval = Number(this.intervalInput.value)*60*1000});
+
     }
 
     randomElt() { // Gives a random audioName out of the enabled
@@ -45,6 +50,12 @@ class AudioPlayer { //Audio player, pauser and randomizer
     }
 
     randomEvent() {
+        let rand = Math.random();
+        rand -= SALVO_CHANCE
+        console.log(rand);
+        if(rand < 0) {
+            this.salvo((SALVO_LENGTH * Math.random()) >> 0);
+        }
 
         this.randomSound();
     }
@@ -112,6 +123,17 @@ class AudioPlayer { //Audio player, pauser and randomizer
 
         clearTimeout(this.loop);
         clearInterval(this.timerLoop);
+        clearTimeout(this.salvoLoop);
+    }
+
+    salvo(count) {
+        console.log(count);
+        if(!count) return;
+
+        this.randomSound();
+        this.salvoLoop = setTimeout(
+        () => {this.salvo(count - 1)}
+        , SALVO_INTERVAL * Math.random())
     }
 
     static enableAudio(filename) {
