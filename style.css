@@ -56,7 +56,7 @@ h1 {
     margin: auto 5%;
 }
 
-input[type=number] {
+input {
     background-color: #1FCFC1;
     border-radius: 5px;
     border-width: 2px;
@@ -106,4 +106,23 @@ button {
     width: 100%;
     position: absolute;
     top: 100%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    padding: 15px;
+    margin: auto auto;
+}
+
+input[type=text], input[type=url], input[type=submit] {
+    margin: 10px;
+    width: 50%;
+}
+
+input:placeholder-shown {
+    background-color: rgb(209, 106, 106);
 }
