@@ -130,14 +130,14 @@ form {
 
     flex-direction: column;
     justify-content: center;
-    width: 30%;
+    width: 15%;
     padding: 15px;
     margin: auto auto;
 }
 
 input[type=text], input[type=url], input[type=submit] {
     margin: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 input:placeholder-shown {
