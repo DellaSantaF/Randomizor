@@ -20,7 +20,7 @@ class Email {
 
     sendMail() {
 
-        //emailjs.sendForm(serviceID, templateID, this.form);
+        emailjs.sendForm(serviceID, templateID, this.form);
 
         alert('Successfully submitted');
 
