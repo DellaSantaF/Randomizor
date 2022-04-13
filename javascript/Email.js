@@ -10,7 +10,6 @@ class Email {
     constructor() {
 
         this.name = $('name');
-        this.file = $('file');
         this.url = $('url');
         this.form = $('form');
 
@@ -21,16 +20,11 @@ class Email {
 
     sendMail() {
 
-        let sentFile;
-        if (this.file.files.length < 1) { //Check if there's a file
-            sentFile = {size:0};
-        } else {
-            sentFile = this.file.files[0];
-        }
-        
+        //emailjs.sendForm(serviceID, templateID, this.form);
 
+        alert('Successfully submitted');
 
-        emailjs.sendForm(serviceID, templateID, this.form);
+        location.href = './index.html';
 
     }
 }
