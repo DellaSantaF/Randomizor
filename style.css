@@ -8,20 +8,9 @@
 body {
     background: linear-gradient(#7fffd4, #39cec1, #7fffd4);
     background-size: 200% 200%;
-    animation: gradient 60s ease infinite;
     height: 100vh;
 }
-@keyframes gradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 0% 200%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
+
 
 #button {
     display: flex;
