@@ -93,6 +93,7 @@ const audioNames = [
     "K Wales",
     "Katy Perry",
     "Lafarge",
+    "laitier",
     "Lazy town",
     "Le Grand Monarque",
     "Long fart",
