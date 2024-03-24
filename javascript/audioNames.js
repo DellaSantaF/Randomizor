@@ -53,6 +53,8 @@ const audioNames = [
     "Funeste Chorale",
     "ga-non",
     "Geinoz-Cide",
+    "Gigaset 01",
+    "Gigaset fountain",
     "Giraffe",
     "Godwin",
     "Grave fart",
