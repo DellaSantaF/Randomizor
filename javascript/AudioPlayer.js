@@ -1,7 +1,7 @@
 // AudioPlayer class file
 const MIN_INTERVAL = 0*1000; // milliseconds
-const SALVO_CHANCE = 0.1;
-const SALVO_LENGTH = 20;
+const SALVO_CHANCE = 0.02;
+const SALVO_LENGTH = 10;
 const SALVO_INTERVAL = 2000; // ms
 
 let max_interval = 600*1000; // milliseconds
