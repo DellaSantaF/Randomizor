@@ -10,6 +10,25 @@ disable = [
     "Ennui",
     "Epee",
     "Non",
-    "Sans feu",
+    "Sans feu"
 ]
 
+fart = [
+    "Brain fart",
+    "Disperse fart",
+    "Fart sound effect",
+    "Grave fart",
+    "Humid fart",
+    "Long fart",
+    "Loon fart",
+    "Mickey fart",
+    "Poop fart",
+    "Question fart",
+    "Quick fart",
+    "Reverb fart",
+    "Shart",
+    "Short fart",
+    "Stink fart",
+    "Sus fart",
+    "Trebble fart"
+]
